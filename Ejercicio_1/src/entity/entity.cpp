@@ -9,6 +9,7 @@ using std::cout;
 
 Entity::Entity(int x, int y, int w, int h)
 {
+	active = false;
 	position = { x, y };
 	size = { w, h };
 
@@ -32,7 +33,17 @@ bool Entity::collidesWith(Entity* entity)
 	return position.x == entity->position.x && position.y == entity->position.y;
 }
 
+
 Vector2i Entity::getSize()
 {
 	return size;
+}
+
+bool Entity::isActive()
+{
+	return active;
+}
+void Entity::setActive(bool active)
+{
+	this->active = active;
 }
