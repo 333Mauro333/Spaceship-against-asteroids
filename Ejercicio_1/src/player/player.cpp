@@ -7,10 +7,13 @@
 using std::cout;
 
 
-Player::Player(int x, int y, int w, int h) : Entity(x, y, w, h)
+Player::Player(int x, int y, int w, int h, unsigned int lives, unsigned int points = 0) : Entity(x, y, w, h)
 {
 	controls = { 'a', 'd', 'w' }; // Botones izquierda, derecha y disparar, respectivamente.
 	sideLimits = { 0, 0 }; // Límites de las paredes, seteados después mediante una función pública.
+
+	this->lives = lives;
+	this->points = points;
 
 	setForegroundColor(Color::GREEN);
 	cout << "Se ha creado un jugador.\n\n";
