@@ -22,7 +22,7 @@ struct SIDE_LIMITS
 class Player : public Entity
 {
 public:
-	Player(int x, int y, int w, int h, unsigned int lives, unsigned int points);
+	Player(int x, int y, int w, int h, unsigned int lives, unsigned int points = 0);
 	~Player();
 
 	void update() override;

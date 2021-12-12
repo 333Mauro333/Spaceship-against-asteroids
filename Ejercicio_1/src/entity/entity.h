@@ -19,8 +19,10 @@ public:
 	virtual void clear() = 0;
 
 	Vector2i getPosition();
+	Vector2i getSize();
 	virtual bool collidesWith(Entity* entity);
 	bool isActive();
+	void setActive(bool active);
 
 	void setPosition(int x, int y);
 
@@ -29,10 +31,6 @@ protected:
 
 	Vector2i position;
 	Vector2i size;
-
-	Vector2i getSize();
-
-	void setActive(bool active);
 };
 
 #endif // !ENTITY_H
