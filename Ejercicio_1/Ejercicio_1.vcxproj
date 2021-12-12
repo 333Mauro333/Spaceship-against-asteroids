@@ -23,6 +23,7 @@
     <ClCompile Include="src\asteroid\asteroid.cpp" />
     <ClCompile Include="src\bullet\bullet.cpp" />
     <ClCompile Include="src\entity\entity.cpp" />
+    <ClCompile Include="src\hud\hud.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\player\player.cpp" />
   </ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="src\asteroid\asteroid.h" />
     <ClInclude Include="src\bullet\bullet.h" />
     <ClInclude Include="src\entity\entity.h" />
+    <ClInclude Include="src\hud\hud.h" />
     <ClInclude Include="src\player\player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
