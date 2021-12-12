@@ -1,15 +1,22 @@
 #ifndef BULLET_H
 #define BULLET_H
 
+#include "entity/entity.h"
 
-class Bullet
+
+class Bullet : public Entity
 {
 public:
-	Bullet();
+	Bullet(int x, int y, int w, int h);
 	~Bullet();
 
-private:
+	void update() override;
+	void draw() override;
 
+	void hit();
+
+private:
+	void goUp();
 };
 
 #endif // !BULLET_H
