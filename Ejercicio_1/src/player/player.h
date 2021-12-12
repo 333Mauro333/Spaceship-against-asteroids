@@ -24,8 +24,9 @@ public:
 	Player(int x, int y, int w, int h, unsigned int lives, unsigned int points);
 	~Player();
 
-	virtual void update() override;
-	virtual void draw() override;
+	void update() override;
+	void draw() override;
+	void clear() override;
 
 	bool collidesWith(Entity* entity) override;
 	bool collidesChar(int x, int y, Entity* entity);

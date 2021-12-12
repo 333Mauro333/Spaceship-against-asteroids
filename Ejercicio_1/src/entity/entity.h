@@ -16,6 +16,7 @@ public:
 
 	virtual void update() = 0;
 	virtual void draw() = 0;
+	virtual void clear() = 0;
 
 	Vector2i getPosition();
 	virtual bool collidesWith(Entity* entity);

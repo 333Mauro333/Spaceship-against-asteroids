@@ -38,11 +38,25 @@ void Player::draw()
 	if (active)
 	{
 		setForegroundColor(Color::GREEN);
-		cout << "  " << static_cast<char>(256 + 30) << "  \n";
-		cout << " (" << static_cast<char>(206) << ")\n";
+
+		goToCoordinates(position.x + 2, position.y);
+		cout << static_cast<char>(256 + 30);
+		goToCoordinates(position.x + 1, position.y + 1);
+		cout << "(" << static_cast<char>(206) << ")";
+		goToCoordinates(position.x, position.y + 2);
 		cout << static_cast<char>(256 + 30) << static_cast<char>(188) << " " << static_cast<char>(200) << static_cast<char>(256 + 30);
+
 		setForegroundColor(Color::WHITE);
 	}
+}
+void Player::clear()
+{
+	goToCoordinates(position.x + 2, position.y);
+	cout << " ";
+	goToCoordinates(position.x + 1, position.y + 1);
+	cout << "   ";
+	goToCoordinates(position.x, position.y + 2);
+	cout << "     ";
 }
 
 bool Player::collidesWith(Entity* entity)

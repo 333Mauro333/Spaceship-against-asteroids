@@ -12,6 +12,7 @@ public:
 
 	void update() override;
 	void draw() override;
+	void clear() override;
 
 	void hit();
 

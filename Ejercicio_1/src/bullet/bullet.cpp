@@ -33,10 +33,15 @@ void Bullet::draw()
 {
 	if (active)
 	{
-		// Limpiado de su posición.
+		clear();
 		goToCoordinates(position.x, position.y);
-		cout << "";
+		cout << "ð";
 	}
+}
+void Bullet::clear()
+{
+	goToCoordinates(position.x, position.y);
+	cout << " ";
 }
 
 void Bullet::hit()
