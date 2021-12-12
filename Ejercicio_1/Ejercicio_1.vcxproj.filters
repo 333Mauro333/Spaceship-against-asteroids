@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="all_elements">
+      <UniqueIdentifier>{4f07fbf5-0db1-4771-872b-7b9c445ad634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src">
+      <UniqueIdentifier>{5b9f17a9-a5e0-4259-b23f-d7efed34185a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\lib">
+      <UniqueIdentifier>{64de6597-bf56-41cc-aa21-3e2aa89027fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src\player">
+      <UniqueIdentifier>{ffb892d9-321e-4678-9559-420221734102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src\hud">
+      <UniqueIdentifier>{d71ab309-2b72-4c27-86a2-9bfd6ce29f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src\asteroid">
+      <UniqueIdentifier>{631130b5-e28e-49e9-aaa5-92f0839fc10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src\bullet">
+      <UniqueIdentifier>{49d9a40f-c097-4d9e-8a68-407bedf4ba34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src\entity">
+      <UniqueIdentifier>{3d1ee6f3-517f-45e6-a2d8-d331c5fb629d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\src\game_manager">
+      <UniqueIdentifier>{06096f35-1534-4c4c-a628-d88a22cb6f4b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>all_elements\src</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Library\AwesomeLibrary.cpp">
+      <Filter>all_elements\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\player\player.cpp">
+      <Filter>all_elements\src\player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\player\player.h">
+      <Filter>all_elements\src\player</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
