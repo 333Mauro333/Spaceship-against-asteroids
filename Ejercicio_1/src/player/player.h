@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "entity/entity.h"
+#include "bullet/bullet.h"
 
 
 enum class DIRECTION { LEFT, RIGHT };
@@ -35,10 +36,15 @@ public:
 
 	unsigned int getLives();
 	unsigned int getPoints();
+	static int getBulletArraySize();
+	Bullet* getBullet(int ind);
 
 private:
 	CONTROLS controls;
 	SIDE_LIMITS sideLimits;
+
+	static const int bulletArraySize = 2;
+	Bullet* bullets[3];
 
 	unsigned int lives;
 	unsigned int points;

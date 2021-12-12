@@ -15,12 +15,22 @@ Player::Player(int x, int y, int w, int h, unsigned int lives, unsigned int poin
 	this->lives = lives;
 	this->points = points;
 
+	for (int i = 0; i < bulletArraySize; i++)
+	{
+		bullets[i] = new Bullet(x + 2, y - 1, 1, 2);
+	}
+
 	setForegroundColor(Color::GREEN);
 	cout << "Se ha creado un jugador.\n\n";
 	setForegroundColor(Color::WHITE);
 }
 Player::~Player()
 {
+	for (int i = 0; i < bulletArraySize; i++)
+	{
+		delete bullets[i];
+	}
+
 	setForegroundColor(Color::RED);
 	cout << "El jugador ha sido eliminado de la memoria.\n\n";
 	setForegroundColor(Color::WHITE);
@@ -88,6 +98,14 @@ unsigned int Player::getPoints()
 {
 	return points;
 }
+int Player::getBulletArraySize()
+{
+	return bulletArraySize;
+}
+Bullet* Player::getBullet(int ind)
+{
+	return bullets[ind];
+}
 
 
 void Player::shipMovement()
@@ -148,7 +166,15 @@ void Player::move(DIRECTION direction)
 }
 void Player::shoot()
 {
-	// Comprueba la actividad de las balas mediante un for y la primera inactiva que encuentre, la dispara.
+	for (int i = 0; i < bulletArraySize; i++)
+	{
+		if (bullets[i]->isActive())
+		{
+			bullets[i]->setPosition(position.x + 2, position.y - 1);
+			bullets[i]->fire();
+			break;
+		}
+	}
 }
 bool Player::isKeyPressed()
 {

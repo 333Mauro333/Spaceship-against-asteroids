@@ -20,6 +20,7 @@ public:
 
 	Vector2i getPosition();
 	virtual bool collidesWith(Entity* entity);
+	bool isActive();
 
 	void setPosition(int x, int y);
 
@@ -31,7 +32,6 @@ protected:
 
 	Vector2i getSize();
 
-	bool isActive();
 	void setActive(bool active);
 };
 
