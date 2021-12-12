@@ -42,6 +42,9 @@
     <ClCompile Include="src\bullet\bullet.cpp">
       <Filter>all_elements\src\bullet</Filter>
     </ClCompile>
+    <ClCompile Include="src\asteroid\asteroid.cpp">
+      <Filter>all_elements\src\asteroid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\player\player.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="src\bullet\bullet.h">
       <Filter>all_elements\src\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\asteroid\asteroid.h">
+      <Filter>all_elements\src\asteroid</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

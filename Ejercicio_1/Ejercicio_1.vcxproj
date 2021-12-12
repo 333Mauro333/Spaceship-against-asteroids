@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\Library\AwesomeLibrary.cpp" />
+    <ClCompile Include="src\asteroid\asteroid.cpp" />
     <ClCompile Include="src\bullet\bullet.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\player\player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\asteroid\asteroid.h" />
     <ClInclude Include="src\bullet\bullet.h" />
     <ClInclude Include="src\player\player.h" />
   </ItemGroup>
