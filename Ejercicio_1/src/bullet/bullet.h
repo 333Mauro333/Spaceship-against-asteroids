@@ -14,6 +14,7 @@ public:
 	void draw() override;
 	void clear() override;
 
+	void fire();
 	void hit();
 
 private:

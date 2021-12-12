@@ -36,17 +36,25 @@ void Bullet::draw()
 		clear();
 		goToCoordinates(position.x, position.y);
 		cout << "ð";
+		goToCoordinates(position.x, position.y + 1);
+		cout << "ð";
 	}
 }
 void Bullet::clear()
 {
 	goToCoordinates(position.x, position.y);
 	cout << " ";
+	goToCoordinates(position.x, position.y + 1);
+	cout << " ";
 }
 
+void Bullet::fire()
+{
+	active = true;
+}
 void Bullet::hit()
 {
-	// Se limpia su dibujo.
+	clear();
 	active = false;
 }
 

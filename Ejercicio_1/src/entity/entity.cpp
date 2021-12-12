@@ -30,7 +30,13 @@ Vector2i Entity::getPosition()
 }
 bool Entity::collidesWith(Entity* entity)
 {
-	return position.x == entity->position.x && position.y == entity->position.y;
+	return position.x + size.x - 1 >= entity->position.x && position.x <= entity->position.x + entity->size.x - 1 &&
+		   position.y + size.y - 1 >= entity->position.y && position.y <= entity->position.y + entity->size.y - 1;
+}
+
+void Entity::setPosition(int x, int y)
+{
+	position = { x, y };
 }
 
 

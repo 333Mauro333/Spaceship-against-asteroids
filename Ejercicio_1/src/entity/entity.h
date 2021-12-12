@@ -21,6 +21,8 @@ public:
 	Vector2i getPosition();
 	virtual bool collidesWith(Entity* entity);
 
+	void setPosition(int x, int y);
+
 protected:
 	bool active;
 
