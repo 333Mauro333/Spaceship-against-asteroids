@@ -51,6 +51,9 @@
     <ClCompile Include="src\hud\hud.cpp">
       <Filter>all_elements\src\hud</Filter>
     </ClCompile>
+    <ClCompile Include="src\game_manager\game_manager.cpp">
+      <Filter>all_elements\src\game_manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\player\player.h">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="src\hud\hud.h">
       <Filter>all_elements\src\hud</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game_manager\game_manager.h">
+      <Filter>all_elements\src\game_manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
