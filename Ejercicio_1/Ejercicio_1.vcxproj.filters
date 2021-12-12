@@ -39,10 +39,16 @@
     <ClCompile Include="src\player\player.cpp">
       <Filter>all_elements\src\player</Filter>
     </ClCompile>
+    <ClCompile Include="src\bullet\bullet.cpp">
+      <Filter>all_elements\src\bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\player\player.h">
       <Filter>all_elements\src\player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bullet\bullet.h">
+      <Filter>all_elements\src\bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
