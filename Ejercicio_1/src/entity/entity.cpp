@@ -31,3 +31,8 @@ bool Entity::collidesWith(Entity* entity)
 {
 	return position.x == entity->position.x && position.y == entity->position.y;
 }
+
+Vector2i Entity::getSize()
+{
+	return size;
+}
