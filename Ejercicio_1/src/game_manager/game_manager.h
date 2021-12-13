@@ -1,8 +1,9 @@
 #ifndef GAME_MANAGER
 #define GAME_MANAGER
 
-#include "player/player.h"
 #include "hud/hud.h"
+#include "player/player.h"
+#include "asteroid/asteroid.h"
 
 
 struct EDGE_POSITIONS
@@ -24,10 +25,12 @@ public:
 private:
 	EDGE_POSITIONS edgePositions;
 	bool gameOver;
+	unsigned int counter;
 
-	Player* player;
 	HUD* hud;
-
+	Player* player;
+	static const int asteroidArraySize = 15;
+	Asteroid* asteroids[asteroidArraySize];
 
 	void update();
 	void draw();

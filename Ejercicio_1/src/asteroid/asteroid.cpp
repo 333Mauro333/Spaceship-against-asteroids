@@ -13,6 +13,8 @@ Asteroid::Asteroid(int x, int y, int w, int h) : Entity(x, y, w, h)
 {
 	top = 0;
 	bot = 0;
+	left = 0;
+	right = 0;
 
 	setForegroundColor(Color::GREEN);
 	cout << "Se ha creado un asteroide.\n\n";
@@ -69,11 +71,18 @@ void Asteroid::hit()
 	clear();
 	active = false;
 }
+void Asteroid::setRandomPositionX()
+{
+	position.x = rand() % (right - left + 1) + left;
+	position.y = top + 1;
+}
 
-void Asteroid::setVerticalLimits(int top, int bot)
+void Asteroid::setLimits(int top, int bot, int left, int right)
 {
 	this->top = top;
 	this->bot = bot;
+	this->left = left;
+	this->right = right;
 }
 
 unsigned int Asteroid::getAmountOfAsteroids()

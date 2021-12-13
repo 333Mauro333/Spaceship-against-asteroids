@@ -16,8 +16,9 @@ public:
 
 	void appear();
 	void hit();
+	void setRandomPositionX();
 
-	void setVerticalLimits(int top, int bot);
+	void setLimits(int top, int bot, int left, int right);
 
 	static unsigned int getAmountOfAsteroids();
 
@@ -25,6 +26,8 @@ private:
 	static unsigned int amountOfAsteroids;
 	int top;
 	int bot;
+	int left;
+	int right;
 
 	void goDown();
 };
