@@ -23,7 +23,7 @@ GameManager::GameManager(int top, int bot, int left, int right, bool showDebugMe
 	victory = false;
 	counter = 0;
 
-	player = new Player((right - left) / 2 + left - playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 0, 0, showDebugMessages);
+	player = new Player((right - left) / 2 + left - playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 0, 4500, showDebugMessages);
 	player->setActive(true);
 	player->setBorderLimits(left, right);
 	for (int i = 0; i < Player::getBulletArraySize(); i++)
@@ -99,6 +99,7 @@ void GameManager::update()
 	if (static_cast<int>(player->getPoints()) >= requiredScore)
 	{
 		pressAKeyToPlay(true);
+		theGameIsOver(true);
 		return;
 	}
 	if (!player->isActive() && static_cast<int>(Asteroid::getAmountOfActiveAsteroids()) == 0)
@@ -141,6 +142,9 @@ void GameManager::draw()
 {
 	if (!gameOver)
 	{
+		goToCoordinates(getScreenWidth() / 2 - 15, 3);
+		cout << "Puntos requeridos: " << requiredScore << ".";
+
 		drawFrame(edgePositions.left, edgePositions.top, edgePositions.right, edgePositions.bot);
 
 		hud->writeStatistics(player);
@@ -197,7 +201,10 @@ void GameManager::showFinalMessage()
 	clearScreen();
 	goToCoordinates(getScreenWidth() / 7, 4);
 	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos! " : cout << "Los asteroides han destruido tu nave. ";
-
+	if (!player->isActive() && player->getLives() == 0)
+	{
+		cout << "\nAsi es, a pesar de que la nave fue destruida y te hayas quedado sin vidas, la victoria fue conseguida!";
+	}
 	system("pause");
 
 	clearScreen();
