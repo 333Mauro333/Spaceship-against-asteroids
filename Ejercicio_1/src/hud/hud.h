@@ -15,13 +15,15 @@ struct STAT_POSITIONS
 class HUD
 {
 public:
-	HUD(int livesX, int pointsX, int amountOfAsteroidsX, int statisticsY);
+	HUD(int livesX, int pointsX, int amountOfAsteroidsX, int statisticsY, bool showDebugMessages = true);
 	~HUD();
 
 	void writeStatistics(Player* player);
 	void showEndMessage(bool victory);
 
 private:
+	bool showDebugMessages;
+
 	STAT_POSITIONS statPositions;
 };
 

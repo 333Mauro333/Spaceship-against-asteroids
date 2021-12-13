@@ -5,7 +5,7 @@
 
 int main()
 {
-	GameManager* gameManager = new GameManager(5, getScreenHeight() - 1, 5, getScreenWidth() - 5);
+	GameManager* gameManager = new GameManager(5, getScreenHeight() - 1, 5, getScreenWidth() - 5, true);
 
 	gameManager->run();
 

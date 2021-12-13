@@ -10,12 +10,17 @@ using std::cout;
 
 unsigned int Asteroid::amountOfActiveAsteroids = 0;
 
-Asteroid::Asteroid(int x, int y, int w, int h, int pointValue) : Entity(x, y, w, h)
+Asteroid::Asteroid(int x, int y, int w, int h, int pointValue, bool showDebugMessages) : Entity(x, y, w, h, showDebugMessages)
 {
+	this->showDebugMessages = showDebugMessages;
+
 	this->pointValue = 200;
 	edgePositions = { 0, 0, 0, 0 };
 
-	showCreationMessage("asteroide", true, 1);
+	if (showDebugMessages)
+	{
+		showCreationMessage("asteroide", true, 1);
+	}
 }
 Asteroid::~Asteroid()
 {
@@ -24,7 +29,10 @@ Asteroid::~Asteroid()
 		amountOfActiveAsteroids--;
 	}
 
-	showDestructionMessage("asteroide", true);
+	if (showDebugMessages)
+	{
+		showDestructionMessage("asteroide", true);
+	}
 }
 
 void Asteroid::update()

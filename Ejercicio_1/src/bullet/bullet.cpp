@@ -8,15 +8,23 @@
 using std::cout;
 
 
-Bullet::Bullet(int x, int y, int w, int h) : Entity(x, y, w, h)
+Bullet::Bullet(int x, int y, int w, int h, bool showDebugMessages) : Entity(x, y, w, h, showDebugMessages)
 {
+	this->showDebugMessages = showDebugMessages;
+
 	top = 0;
 
-	showCreationMessage("bala", false, 1);
+	if (showDebugMessages)
+	{
+		showCreationMessage("bala", false, 1);
+	}
 }
 Bullet::~Bullet()
 {
-	showDestructionMessage("bala", false);
+	if (showDebugMessages)
+	{
+		showDestructionMessage("bala", false);
+	}
 }
 
 void Bullet::update()

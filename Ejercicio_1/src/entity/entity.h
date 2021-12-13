@@ -11,7 +11,7 @@ struct Vector2i
 class Entity
 {
 public:
-	Entity(int x, int y, int w, int h);
+	Entity(int x, int y, int w, int h, bool showDebugMessages = true);
 	virtual ~Entity();
 
 	virtual void update() = 0;
@@ -27,6 +27,8 @@ public:
 	void setPosition(int x, int y);
 
 protected:
+	bool showDebugMessages;
+
 	bool active;
 
 	Vector2i position;

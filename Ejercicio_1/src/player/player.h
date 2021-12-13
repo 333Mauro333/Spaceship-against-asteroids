@@ -22,7 +22,7 @@ struct SIDE_LIMITS
 class Player : public Entity
 {
 public:
-	Player(int x, int y, int w, int h, unsigned int lives, unsigned int points = 0);
+	Player(int x, int y, int w, int h, unsigned int lives, unsigned int points = 0, bool showDebugMessages = true);
 	~Player();
 
 	void update() override;
@@ -34,6 +34,9 @@ public:
 	void setBorderLimits(int x, int y);
 	void crash();
 	void addPoints(int points, int maxLimit = 10000);
+	void addALife();
+	void subtractALife();
+	void resetPosition();
 
 	unsigned int getLives();
 	unsigned int getPoints();
@@ -41,11 +44,15 @@ public:
 	Bullet* getBullet(int ind);
 
 private:
+	bool showDebugMessages;
+
 	CONTROLS controls;
 	SIDE_LIMITS sideLimits;
 
 	static const int bulletArraySize = 2;
 	Bullet* bullets[bulletArraySize];
+
+	Vector2i initialPosition;
 
 	unsigned int lives;
 	unsigned int points;

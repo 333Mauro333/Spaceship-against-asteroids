@@ -10,15 +10,23 @@
 using std::cout;
 
 
-HUD::HUD(int livesX, int pointsX, int amountOfAsteroidsX, int statisticsY)
+HUD::HUD(int livesX, int pointsX, int amountOfAsteroidsX, int statisticsY, bool showDebugMessages)
 {
+	this->showDebugMessages = showDebugMessages;
+
 	statPositions = { livesX, pointsX, amountOfAsteroidsX, statisticsY };
 
-	showCreationMessage("HUD", true, 1);
+	if (showDebugMessages)
+	{
+		showCreationMessage("HUD", true, 1);
+	}
 }
 HUD::~HUD()
 {
-	showDestructionMessage("HUD", true, 1);
+	if (showDebugMessages)
+	{
+		showDestructionMessage("HUD", true, 1);
+	}
 }
 
 void HUD::writeStatistics(Player* player)

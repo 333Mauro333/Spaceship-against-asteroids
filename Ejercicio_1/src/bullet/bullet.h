@@ -7,7 +7,7 @@
 class Bullet : public Entity
 {
 public:
-	Bullet(int x, int y, int w, int h);
+	Bullet(int x, int y, int w, int h, bool showDebugMessages = true);
 	~Bullet();
 
 	void update() override;
@@ -22,6 +22,8 @@ public:
 	void setTopLimit(int top);
 
 private:
+	bool showDebugMessages;
+
 	int top;
 
 	void goUp();

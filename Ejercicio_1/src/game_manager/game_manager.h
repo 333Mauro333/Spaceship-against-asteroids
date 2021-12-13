@@ -10,14 +10,18 @@
 class GameManager
 {
 public:
-	GameManager(int top, int bot, int left, int right);
+	GameManager(int top, int bot, int left, int right, bool showDebugMessages = true, int requiredScore = 5000);
 	~GameManager();
 
 	void run();
 
 private:
+	bool showDebugMessages;
+
 	EDGE_POSITIONS edgePositions;
+	int requiredScore;
 	bool gameOver;
+	bool victory;
 	unsigned int counter;
 
 	HUD* hud;
@@ -25,11 +29,18 @@ private:
 	static const int asteroidArraySize = 15;
 	Asteroid* asteroids[asteroidArraySize];
 
+	void pressAKeyToPlay();
+
 	void update();
 	void checkCollisions();
 	void draw();
 
+	void resetLevel();
+
 	void appearAsteroids(int stepsToAppear);
+
+	void theGameIsOver(bool victory);
+	void showFinalMessage();
 };
 
 #endif // !GAME_MANAGER

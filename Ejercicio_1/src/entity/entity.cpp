@@ -8,17 +8,25 @@
 using std::cout;
 
 
-Entity::Entity(int x, int y, int w, int h)
+Entity::Entity(int x, int y, int w, int h, bool showDebugMessages)
 {
+	this->showDebugMessages = showDebugMessages;
+
 	active = false;
 	position = { x, y };
 	size = { w, h };
 
-	showCreationMessage("entidad", false);
+	if (showDebugMessages)
+	{
+		showCreationMessage("entidad", false);
+	}
 }
 Entity::~Entity()
 {
-	showDestructionMessage("entidad", false, 1);
+	if (showDebugMessages)
+	{
+		showDestructionMessage("entidad", false, 1);
+	}
 }
 
 Vector2i Entity::getPosition()

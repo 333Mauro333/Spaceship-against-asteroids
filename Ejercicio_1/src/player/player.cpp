@@ -8,20 +8,27 @@
 using std::cout;
 
 
-Player::Player(int x, int y, int w, int h, unsigned int lives, unsigned int points) : Entity(x, y, w, h)
+Player::Player(int x, int y, int w, int h, unsigned int lives, unsigned int points, bool showDebugMessages) : Entity(x, y, w, h, showDebugMessages)
 {
+	if (showDebugMessages)
+	{
+		showCreationMessage("jugador", true, 1);
+	}
+
+	this->showDebugMessages = showDebugMessages;
+
 	controls = { 'a', 'd', 'w' }; // Botones izquierda, derecha y disparar, respectivamente.
 	sideLimits = { 0, 0 }; // Límites de las paredes, seteados después mediante una función pública.
+	initialPosition = { x, y };
 
 	this->lives = lives;
 	this->points = points;
 
 	for (int i = 0; i < bulletArraySize; i++)
 	{
-		bullets[i] = new Bullet(x + 2, y - 1, 1, 2);
+		bullets[i] = new Bullet(x + 2, y - 1, 1, 2, showDebugMessages);
 	}
 
-	showCreationMessage("jugador", true, 1);
 }
 Player::~Player()
 {
@@ -30,7 +37,10 @@ Player::~Player()
 		delete bullets[i];
 	}
 
-	showDestructionMessage("jugador", true);
+	if (showDebugMessages)
+	{
+		showDestructionMessage("jugador", true);
+	}
 }
 
 void Player::update()
@@ -99,7 +109,19 @@ void Player::crash()
 }
 void Player::addPoints(int points, int maxLimit)
 {
-	this->points = (this->points + points > maxLimit) ? maxLimit : this->points += points;
+	this->points = (static_cast<int>(this->points) + points > maxLimit) ? maxLimit : this->points += points;
+}
+void Player::addALife()
+{
+	lives++;
+}
+void Player::subtractALife()
+{
+	lives--;
+}
+void Player::resetPosition()
+{
+	setPosition(initialPosition.x, initialPosition.y);
 }
 
 unsigned int Player::getLives()
