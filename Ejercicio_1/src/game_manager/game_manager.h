@@ -2,6 +2,8 @@
 #define GAME_MANAGER
 
 #include "player/player.h"
+#include "hud/hud.h"
+
 
 struct EDGE_POSITIONS
 {
@@ -24,13 +26,14 @@ private:
 	bool gameOver;
 
 	Player* player;
+	HUD* hud;
+
 
 	void update();
 	void draw();
 	void destroy();
 
 	void checkCollisions();
-
 };
 
 #endif // !GAME_MANAGER

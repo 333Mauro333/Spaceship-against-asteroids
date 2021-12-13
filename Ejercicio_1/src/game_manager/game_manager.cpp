@@ -14,13 +14,15 @@ GameManager::GameManager(int top, int bot, int left, int right)
 
 	edgePositions = { top, bot, left, right };
 	gameOver = false;
-	player = new Player((right - left) / 2 + left + playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 3);
+	player = new Player((right - left) / 2 + left - playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 3);
 	player->setActive(true);
 	player->setBorderLimits(left, right);
 	for (int i = 0; i < Player::getBulletArraySize(); i++)
 	{
 		player->getBullet(i)->setTopLimit(top);
 	}
+
+	hud = new HUD(getScreenWidth() / 16 * 2, getScreenWidth() / 16 * 7, getScreenWidth() / 16 * 12, top - 3);
 
 	hideCursor();
 
@@ -62,6 +64,7 @@ void GameManager::draw()
 {
 	drawFrame(edgePositions.left, edgePositions.top, edgePositions.right, edgePositions.bot);
 	player->draw();
+	hud->writeStatistics(player);
 }
 void GameManager::destroy()
 {
