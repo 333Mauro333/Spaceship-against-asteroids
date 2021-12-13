@@ -73,7 +73,7 @@ void GameManager::initObjects()
 	const int playerSizeX = 5;
 	const int playerSizeY = 3;
 
-	player = new Player((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - playerSizeX / 2, edgePositions.bot - playerSizeY, playerSizeX, playerSizeY, 15, 0, showDebugMessages);
+	player = new Player((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - playerSizeX / 2, edgePositions.bot - playerSizeY, playerSizeX, playerSizeY, 0, 4400, showDebugMessages);
 	player->setActive(true);
 	player->setBorderLimits(edgePositions.left, edgePositions.right);
 	for (int i = 0; i < Player::getBulletArraySize(); i++)
@@ -210,9 +210,9 @@ void GameManager::showFinalMessage()
 	clearScreen();
 	goToCoordinates(getScreenWidth() / 7, 4);
 	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos! " : cout << "Los asteroides han destruido tu nave. ";
-	if (!player->isActive() && player->getLives() == 0)
+	if (!player->isActive() && player->getLives() == 0 && player->getPoints() >= requiredScore)
 	{
-		cout << "\nAsi es, a pesar de que la nave fue destruida y te hayas quedado sin vidas, la victoria fue conseguida!";
+		cout << "\n\nAsi es, a pesar de que la nave fue destruida y te hayas quedado sin vidas, la victoria fue conseguida!\n";
 	}
 	system("pause");
 

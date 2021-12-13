@@ -48,8 +48,6 @@ void Asteroid::update()
 		{
 			hit();
 		}
-
-
 	}
 }
 void Asteroid::draw()
@@ -80,7 +78,7 @@ void Asteroid::hit()
 }
 void Asteroid::setRandomPositionX()
 {
-	position.x = rand() % (edgePositions.right - edgePositions.left + 1) + edgePositions.left;
+	position.x = rand() % ((edgePositions.right - 1) - (edgePositions.left + 1) + 1) + (edgePositions.left + 1);
 	position.y = edgePositions.top + 1;
 }
 
@@ -114,7 +112,7 @@ unsigned int Asteroid::getAmountOfActiveAsteroids()
 
 void Asteroid::goDown()
 {
-	if (counter == numberToGoDown)
+	if (counter >= numberToGoDown)
 	{
 		counter = 0;
 		position.y++;

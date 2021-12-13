@@ -26,7 +26,7 @@ private:
 
 	HUD* hud;
 	Player* player;
-	static const int asteroidArraySize = 15;
+	static const int asteroidArraySize = 30;
 	Asteroid* asteroids[asteroidArraySize];
 
 	void pressAKeyToPlay(bool win);
