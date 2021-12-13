@@ -44,11 +44,15 @@ void Bullet::draw()
 {
 	if (active)
 	{
+		setForegroundColor(Color::LBLUE);
+
 		clear();
 		goToCoordinates(position.x, position.y);
 		cout << static_cast<char>(179);
 		goToCoordinates(position.x, position.y + 1);
 		cout << static_cast<char>(179);
+
+		setForegroundColor(Color::WHITE);
 	}
 }
 void Bullet::clear()

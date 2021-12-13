@@ -156,6 +156,7 @@ void Player::shipMovement()
 			{
 				clear();
 				move(DIRECTION::LEFT);
+				draw();
 			}
 		}
 		else if (keyPressed == controls.right || keyPressed == static_cast<char>(static_cast<int>(controls.right) - 32))
@@ -164,6 +165,7 @@ void Player::shipMovement()
 			{
 				clear();
 				move(DIRECTION::RIGHT);
+				draw();
 			}
 		}
 		else if (keyPressed == controls.shoot || keyPressed == static_cast<char>(static_cast<int>(controls.shoot) - 32))

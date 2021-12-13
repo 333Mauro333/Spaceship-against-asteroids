@@ -31,6 +31,8 @@ HUD::~HUD()
 
 void HUD::writeStatistics(Player* player)
 {
+	setForegroundColor(Color::LRED);
+
 	goToCoordinates(statPositions.livesX, statPositions.y);
 	cout << "Lives: ";
 	for (int i = 0; i < static_cast<int>(player->getLives()); i++)
@@ -43,6 +45,8 @@ void HUD::writeStatistics(Player* player)
 
 	goToCoordinates(statPositions.amountOfAsteroidsX, statPositions.y);
 	cout << "Asteroids in screen: " << Asteroid::getAmountOfActiveAsteroids() << " ";
+
+	setForegroundColor(Color::WHITE);
 }
 void HUD::showEndMessage(bool victory)
 {

@@ -35,6 +35,7 @@ private:
 	void update();
 	void checkCollisions();
 	void draw();
+	void drawStars(int amount);
 
 	void resetLevel();
 

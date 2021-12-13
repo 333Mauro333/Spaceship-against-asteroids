@@ -12,7 +12,7 @@ GameManager::GameManager(int top, int bot, int left, int right, bool showDebugMe
 {
 	srand(static_cast<unsigned int>(time(NULL)));
 	hideCursor();
-
+	
 	edgePositions = { top, bot, left, right };
 	this->showDebugMessages = showDebugMessages;
 	this->requiredScore = requiredScore;
@@ -62,10 +62,14 @@ void GameManager::run()
 
 void GameManager::pressAKeyToPlay(bool win)
 {
+	setForegroundColor(Color::LRED);
+
 	goToCoordinates((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - (edgePositions.right / 4), edgePositions.top - 1);
 	win ? cout << "Has alcanzado el puntaje requerido! " : cout << "La nave ha sido destruida. ";
 	Sleep(1000);
 	system("pause");
+
+	setForegroundColor(Color::WHITE);
 }
 
 void GameManager::initObjects()
@@ -73,7 +77,7 @@ void GameManager::initObjects()
 	const int playerSizeX = 5;
 	const int playerSizeY = 3;
 
-	player = new Player((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - playerSizeX / 2, edgePositions.bot - playerSizeY, playerSizeX, playerSizeY, 0, 4400, showDebugMessages);
+	player = new Player((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - playerSizeX / 2, edgePositions.bot - playerSizeY, playerSizeX, playerSizeY, 3, 0, showDebugMessages);
 	player->setActive(true);
 	player->setBorderLimits(edgePositions.left, edgePositions.right);
 	for (int i = 0; i < Player::getBulletArraySize(); i++)
@@ -151,8 +155,10 @@ void GameManager::draw()
 {
 	if (!gameOver)
 	{
+		setForegroundColor(Color::LRED);
 		goToCoordinates(getScreenWidth() / 2 - 15, 3);
 		cout << "Puntos requeridos: " << requiredScore << ".";
+		setForegroundColor(Color::WHITE);
 
 		hud->writeStatistics(player);
 		player->draw();
@@ -162,7 +168,9 @@ void GameManager::draw()
 			asteroids[i]->draw();
 		}
 
+		setForegroundColor(Color::BLUE);
 		drawFrame(edgePositions.left, edgePositions.top, edgePositions.right, edgePositions.bot);
+		setForegroundColor(Color::WHITE);
 	}
 }
 
@@ -207,14 +215,18 @@ void GameManager::theGameIsOver(bool victory)
 }
 void GameManager::showFinalMessage()
 {
+	setForegroundColor(Color::LRED);
+
 	clearScreen();
 	goToCoordinates(getScreenWidth() / 7, 4);
 	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos! " : cout << "Los asteroides han destruido tu nave. ";
-	if (!player->isActive() && player->getLives() == 0 && player->getPoints() >= requiredScore)
+	if (!player->isActive() && player->getLives() == 0 && static_cast<int>(player->getPoints()) >= requiredScore)
 	{
 		cout << "\n\nAsi es, a pesar de que la nave fue destruida y te hayas quedado sin vidas, la victoria fue conseguida!\n";
 	}
 	system("pause");
 
 	clearScreen();
+
+	setForegroundColor(Color::WHITE);
 }

@@ -56,7 +56,10 @@ void Asteroid::draw()
 	{
 		clear();
 		goToCoordinates(position.x, position.y);
-		cout << static_cast<char>(208);
+
+		setForegroundColor(Color::BROWN);
+		cout << static_cast<char>(155);
+		setForegroundColor(Color::WHITE);
 	}
 }
 void Asteroid::clear()
