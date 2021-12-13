@@ -77,10 +77,10 @@ void GameManager::run()
 }
 
 
-void GameManager::pressAKeyToPlay()
+void GameManager::pressAKeyToPlay(bool win)
 {
 	goToCoordinates((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - (edgePositions.right / 4), edgePositions.top - 1);
-	cout << "La nave ha sido destruida. ";
+	win ? cout << "Has alcanzado el puntaje requerido! " : cout << "La nave ha sido destruida. ";
 	Sleep(1000);
 	system("pause");
 }
@@ -96,17 +96,23 @@ void GameManager::update()
 
 	appearAsteroids(3);
 
+	if (static_cast<int>(player->getPoints()) >= requiredScore)
+	{
+		pressAKeyToPlay(true);
+		return;
+	}
 	if (!player->isActive() && static_cast<int>(Asteroid::getAmountOfActiveAsteroids()) == 0)
 	{
 		hud->writeStatistics(player);
 
 		if (static_cast<int>(player->getLives()) > 0)
 		{
-			pressAKeyToPlay();
+			pressAKeyToPlay(false);
 			resetLevel();
 		}
 		else
 		{
+			pressAKeyToPlay(false);
 			theGameIsOver(false);
 		}
 	}
@@ -188,8 +194,9 @@ void GameManager::theGameIsOver(bool victory)
 }
 void GameManager::showFinalMessage()
 {
-	goToCoordinates(getScreenWidth() / 3.2f, 4);
-	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos!\n" : cout << "Los asteroides han destruido tu nave.\n";
+	clearScreen();
+	goToCoordinates(getScreenWidth() / 7, 4);
+	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos! " : cout << "Los asteroides han destruido tu nave. ";
 
 	system("pause");
 

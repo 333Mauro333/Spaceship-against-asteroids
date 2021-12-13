@@ -29,7 +29,7 @@ private:
 	static const int asteroidArraySize = 15;
 	Asteroid* asteroids[asteroidArraySize];
 
-	void pressAKeyToPlay();
+	void pressAKeyToPlay(bool win);
 
 	void update();
 	void checkCollisions();
