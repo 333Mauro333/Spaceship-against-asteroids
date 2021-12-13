@@ -9,7 +9,7 @@ using std::cout;
 
 Bullet::Bullet(int x, int y, int w, int h) : Entity(x, y, w, h)
 {
-
+	top = 0;
 
 	setForegroundColor(Color::GREEN);
 	cout << "Se ha creado una bala.\n\n";
@@ -26,7 +26,13 @@ void Bullet::update()
 {
 	if (active)
 	{
+		clear();
 		goUp();
+
+		if (position.y <= top)
+		{
+			hit();
+		}
 	}
 }
 void Bullet::draw()
@@ -35,9 +41,9 @@ void Bullet::draw()
 	{
 		clear();
 		goToCoordinates(position.x, position.y);
-		cout << "ð";
+		cout << static_cast<char>(208);
 		goToCoordinates(position.x, position.y + 1);
-		cout << "ð";
+		cout << static_cast<char>(208);
 	}
 }
 void Bullet::clear()
@@ -56,6 +62,11 @@ void Bullet::hit()
 {
 	clear();
 	active = false;
+}
+
+void Bullet::setTopLimit(int top)
+{
+	this->top = top;
 }
 
 

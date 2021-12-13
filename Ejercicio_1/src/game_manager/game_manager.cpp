@@ -17,6 +17,10 @@ GameManager::GameManager(int top, int bot, int left, int right)
 	player = new Player((right - left) / 2 + left + playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 3);
 	player->setActive(true);
 	player->setBorderLimits(left, right);
+	for (int i = 0; i < Player::getBulletArraySize(); i++)
+	{
+		player->getBullet(i)->setTopLimit(top);
+	}
 
 	hideCursor();
 
@@ -38,6 +42,8 @@ void GameManager::run()
 		update();
 		checkCollisions();
 		draw();
+
+		Sleep(50);
 	}
 
 	destroy();

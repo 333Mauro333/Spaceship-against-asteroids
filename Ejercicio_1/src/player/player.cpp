@@ -42,6 +42,11 @@ void Player::update()
 	{
 		shipMovement();
 	}
+
+	for (int i = 0; i < bulletArraySize; i++)
+	{
+		bullets[i]->update();
+	}
 }
 void Player::draw()
 {
@@ -57,6 +62,11 @@ void Player::draw()
 		cout << static_cast<char>(256 + 30) << static_cast<char>(188) << " " << static_cast<char>(200) << static_cast<char>(256 + 30);
 
 		setForegroundColor(Color::WHITE);
+	}
+
+	for (int i = 0; i < bulletArraySize; i++)
+	{
+		bullets[i]->draw();
 	}
 }
 void Player::clear()
@@ -120,6 +130,7 @@ void Player::shipMovement()
 		{
 			if (canMove(DIRECTION::LEFT))
 			{
+				clear();
 				move(DIRECTION::LEFT);
 			}
 		}
@@ -127,6 +138,7 @@ void Player::shipMovement()
 		{
 			if (canMove(DIRECTION::RIGHT))
 			{
+				clear();
 				move(DIRECTION::RIGHT);
 			}
 		}
@@ -168,7 +180,7 @@ void Player::shoot()
 {
 	for (int i = 0; i < bulletArraySize; i++)
 	{
-		if (bullets[i]->isActive())
+		if (!bullets[i]->isActive())
 		{
 			bullets[i]->setPosition(position.x + 2, position.y - 1);
 			bullets[i]->fire();

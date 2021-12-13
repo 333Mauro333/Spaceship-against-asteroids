@@ -17,7 +17,11 @@ public:
 	void fire();
 	void hit();
 
+	void setTopLimit(int top);
+
 private:
+	int top;
+
 	void goUp();
 };
 
