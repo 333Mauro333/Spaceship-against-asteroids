@@ -48,7 +48,21 @@ void HUD::writeStatistics(Player* player)
 
 	setForegroundColor(Color::WHITE);
 }
-void HUD::showEndMessage(bool victory)
+
+void HUD::showFinalMessage(Player* player, bool victory, int requiredScore)
 {
-	victory ? cout << "Felicitaciones! Has alcanzado el puntaje establecido!" : cout << "Los asteroides te han destruido.";
+	setForegroundColor(Color::LRED);
+
+	clearScreen();
+	goToCoordinates(getScreenWidth() / 7, 4);
+	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos! " : cout << "Los asteroides han destruido tu nave. ";
+	if (!player->isActive() && player->getLives() == 0 && static_cast<int>(player->getPoints()) >= requiredScore)
+	{
+		cout << "\n\nAsi es, a pesar de que la nave fue destruida y te hayas quedado sin vidas, la victoria fue conseguida!\n";
+	}
+	system("pause");
+
+	clearScreen();
+
+	setForegroundColor(Color::WHITE);
 }

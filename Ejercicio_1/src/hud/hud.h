@@ -19,7 +19,7 @@ public:
 	~HUD();
 
 	void writeStatistics(Player* player);
-	void showEndMessage(bool victory);
+	void showFinalMessage(Player* player, bool victory, int requiredScore);
 
 private:
 	bool showDebugMessages;

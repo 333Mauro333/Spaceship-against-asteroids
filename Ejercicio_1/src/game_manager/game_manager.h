@@ -40,9 +40,6 @@ private:
 	void resetLevel();
 
 	void appearAsteroids(int stepsToAppear);
-
-	void theGameIsOver(bool victory);
-	void showFinalMessage();
 };
 
 #endif // !GAME_MANAGER

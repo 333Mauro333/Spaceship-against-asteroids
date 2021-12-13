@@ -56,7 +56,7 @@ void GameManager::run()
 		Sleep(50);
 	}
 
-	showFinalMessage();
+	hud->showFinalMessage(player, victory, requiredScore);
 }
 
 
@@ -112,7 +112,8 @@ void GameManager::update()
 	if (static_cast<int>(player->getPoints()) >= requiredScore)
 	{
 		pressAKeyToPlay(true);
-		theGameIsOver(true);
+		gameOver = true;
+		victory = true;
 		return;
 	}
 	if (!player->isActive() && static_cast<int>(Asteroid::getAmountOfActiveAsteroids()) == 0)
@@ -127,7 +128,8 @@ void GameManager::update()
 		else
 		{
 			pressAKeyToPlay(false);
-			theGameIsOver(false);
+			gameOver = true;
+			victory = false;
 		}
 	}
 }
@@ -205,28 +207,4 @@ void GameManager::appearAsteroids(int stepsToAppear)
 			counter++;
 		}
 	}
-}
-
-void GameManager::theGameIsOver(bool victory)
-{
-	gameOver = true;
-
-	this->victory = victory;
-}
-void GameManager::showFinalMessage()
-{
-	setForegroundColor(Color::LRED);
-
-	clearScreen();
-	goToCoordinates(getScreenWidth() / 7, 4);
-	victory ? cout << "Enhorabuena! Has logrado conseguir los " << requiredScore << " puntos! " : cout << "Los asteroides han destruido tu nave. ";
-	if (!player->isActive() && player->getLives() == 0 && static_cast<int>(player->getPoints()) >= requiredScore)
-	{
-		cout << "\n\nAsi es, a pesar de que la nave fue destruida y te hayas quedado sin vidas, la victoria fue conseguida!\n";
-	}
-	system("pause");
-
-	clearScreen();
-
-	setForegroundColor(Color::WHITE);
 }
