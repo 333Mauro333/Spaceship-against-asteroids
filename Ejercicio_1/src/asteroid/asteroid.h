@@ -7,7 +7,7 @@
 class Asteroid : public Entity
 {
 public:
-	Asteroid();
+	Asteroid(int x, int y, int w, int h);
 	~Asteroid();
 
 	void update() override;
@@ -17,9 +17,13 @@ public:
 	void appear();
 	void hit();
 
-	void setBotLimit(int bot);
+	void setVerticalLimits(int top, int bot);
+
+	static unsigned int getAmountOfAsteroids();
 
 private:
+	static unsigned int amountOfAsteroids;
+	int top;
 	int bot;
 
 	void goDown();

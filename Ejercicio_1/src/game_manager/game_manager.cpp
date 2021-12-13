@@ -12,6 +12,8 @@ GameManager::GameManager(int top, int bot, int left, int right)
 	const int playerSizeX = 5;
 	const int playerSizeY = 3;
 
+	srand(static_cast<unsigned int>(time(NULL)));
+
 	edgePositions = { top, bot, left, right };
 	gameOver = false;
 	player = new Player((right - left) / 2 + left - playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 3);

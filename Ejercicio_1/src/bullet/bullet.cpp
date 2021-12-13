@@ -41,9 +41,9 @@ void Bullet::draw()
 	{
 		clear();
 		goToCoordinates(position.x, position.y);
-		cout << static_cast<char>(208);
+		cout << static_cast<char>(179);
 		goToCoordinates(position.x, position.y + 1);
-		cout << static_cast<char>(208);
+		cout << static_cast<char>(179);
 	}
 }
 void Bullet::clear()
