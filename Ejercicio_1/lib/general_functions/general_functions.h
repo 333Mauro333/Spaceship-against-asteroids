@@ -6,6 +6,14 @@
 using std::string;
 
 
+struct EDGE_POSITIONS
+{
+	int top;
+	int bot;
+	int left;
+	int right;
+};
+
 void showCreationMessage(string objectName, bool articleMale, unsigned int lines = 0);
 void showDestructionMessage(string objectName, bool articleMale, unsigned int lines = 0);
 

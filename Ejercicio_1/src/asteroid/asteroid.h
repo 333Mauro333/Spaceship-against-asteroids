@@ -2,6 +2,7 @@
 #define ASTEROID_H
 
 #include "entity/entity.h"
+#include "general_functions.h"
 
 
 class Asteroid : public Entity
@@ -20,14 +21,11 @@ public:
 
 	void setLimits(int top, int bot, int left, int right);
 
-	static unsigned int getAmountOfAsteroids();
+	static unsigned int getAmountOfActiveAsteroids();
 
 private:
-	static unsigned int amountOfAsteroids;
-	int top;
-	int bot;
-	int left;
-	int right;
+	static unsigned int amountOfActiveAsteroids;
+	EDGE_POSITIONS edgePositions;
 
 	void goDown();
 };

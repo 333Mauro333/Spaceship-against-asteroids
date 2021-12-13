@@ -5,6 +5,8 @@
 #include "AwesomeLibrary.h"
 #include "general_functions.h"
 
+#include "asteroid/asteroid.h"
+
 using std::cout;
 
 
@@ -23,7 +25,7 @@ void HUD::writeStatistics(Player* player)
 {
 	goToCoordinates(statPositions.livesX, statPositions.y);
 	cout << "Lives: ";
-	for (int i = 0; i < player->getLives(); i++)
+	for (int i = 0; i < static_cast<int>(player->getLives()); i++)
 	{
 		cout << static_cast<char>(256 + 3);
 	}
@@ -32,7 +34,7 @@ void HUD::writeStatistics(Player* player)
 	cout << "Points: " << player->getPoints();
 
 	goToCoordinates(statPositions.amountOfAsteroidsX, statPositions.y);
-	cout << "Asteroids in screen: ";
+	cout << "Asteroids in screen: " << Asteroid::getAmountOfActiveAsteroids();
 }
 void HUD::showEndMessage(bool victory)
 {

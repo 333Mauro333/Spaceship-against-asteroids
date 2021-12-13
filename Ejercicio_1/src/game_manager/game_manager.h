@@ -1,18 +1,11 @@
 #ifndef GAME_MANAGER
 #define GAME_MANAGER
 
+#include "general_functions.h"
 #include "hud/hud.h"
 #include "player/player.h"
 #include "asteroid/asteroid.h"
 
-
-struct EDGE_POSITIONS
-{
-	int top;
-	int bot;
-	int left;
-	int right;
-};
 
 class GameManager
 {

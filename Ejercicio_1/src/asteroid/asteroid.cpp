@@ -8,14 +8,11 @@
 using std::cout;
 
 
-unsigned int Asteroid::amountOfAsteroids = 0;
+unsigned int Asteroid::amountOfActiveAsteroids = 0;
 
 Asteroid::Asteroid(int x, int y, int w, int h) : Entity(x, y, w, h)
 {
-	top = 0;
-	bot = 0;
-	left = 0;
-	right = 0;
+	edgePositions = { 0, 0, 0, 0 };
 
 	showCreationMessage("asteroide", true, 1);
 }
@@ -23,7 +20,7 @@ Asteroid::~Asteroid()
 {
 	if (active)
 	{
-		amountOfAsteroids--;
+		amountOfActiveAsteroids--;
 	}
 
 	showDestructionMessage("asteroide", true);
@@ -36,7 +33,7 @@ void Asteroid::update()
 		clear();
 		goDown();
 
-		if (position.y >= bot)
+		if (position.y >= edgePositions.bot)
 		{
 			hit();
 		}
@@ -59,32 +56,29 @@ void Asteroid::clear()
 
 void Asteroid::appear()
 {
-	amountOfAsteroids++;
+	amountOfActiveAsteroids++;
 	active = true;
 }
 void Asteroid::hit()
 {
-	amountOfAsteroids--;
+	amountOfActiveAsteroids--;
 	clear();
 	active = false;
 }
 void Asteroid::setRandomPositionX()
 {
-	position.x = rand() % (right - left + 1) + left;
-	position.y = top + 1;
+	position.x = rand() % (edgePositions.right - edgePositions.left + 1) + edgePositions.left;
+	position.y = edgePositions.top + 1;
 }
 
 void Asteroid::setLimits(int top, int bot, int left, int right)
 {
-	this->top = top;
-	this->bot = bot;
-	this->left = left;
-	this->right = right;
+	edgePositions = { top, bot, left, right };
 }
 
-unsigned int Asteroid::getAmountOfAsteroids()
+unsigned int Asteroid::getAmountOfActiveAsteroids()
 {
-	return amountOfAsteroids;
+	return amountOfActiveAsteroids;
 }
 
 
