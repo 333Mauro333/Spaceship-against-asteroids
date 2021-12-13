@@ -28,13 +28,16 @@
     <Filter Include="all_elements\src\game_manager">
       <UniqueIdentifier>{06096f35-1534-4c4c-a628-d88a22cb6f4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="all_elements\lib\Library">
+      <UniqueIdentifier>{212f08b7-97fc-4dc6-a616-521e47463374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="all_elements\lib\general_functions">
+      <UniqueIdentifier>{1ea41763-4cb4-4583-bc5c-b510321392bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>all_elements\src</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Library\AwesomeLibrary.cpp">
-      <Filter>all_elements\lib</Filter>
     </ClCompile>
     <ClCompile Include="src\player\player.cpp">
       <Filter>all_elements\src\player</Filter>
@@ -53,6 +56,12 @@
     </ClCompile>
     <ClCompile Include="src\game_manager\game_manager.cpp">
       <Filter>all_elements\src\game_manager</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Library\AwesomeLibrary.cpp">
+      <Filter>all_elements\lib\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\general_functions\general_functions.cpp">
+      <Filter>all_elements\lib\general_functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="src\game_manager\game_manager.h">
       <Filter>all_elements\src\game_manager</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\general_functions\general_functions.h">
+      <Filter>all_elements\lib\general_functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

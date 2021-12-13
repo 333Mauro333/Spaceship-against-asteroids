@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "AwesomeLibrary.h"
+#include "general_functions.h"
 
 using std::cout;
 
@@ -16,9 +17,7 @@ Asteroid::Asteroid(int x, int y, int w, int h) : Entity(x, y, w, h)
 	left = 0;
 	right = 0;
 
-	setForegroundColor(Color::GREEN);
-	cout << "Se ha creado un asteroide.\n\n";
-	setForegroundColor(Color::WHITE);
+	showCreationMessage("asteroide", true, 1);
 }
 Asteroid::~Asteroid()
 {
@@ -27,9 +26,7 @@ Asteroid::~Asteroid()
 		amountOfAsteroids--;
 	}
 
-	setForegroundColor(Color::RED);
-	cout << "El asteroide ha sido eliminado de la memoria.\n";
-	setForegroundColor(Color::WHITE);
+	showDestructionMessage("asteroide", true);
 }
 
 void Asteroid::update()

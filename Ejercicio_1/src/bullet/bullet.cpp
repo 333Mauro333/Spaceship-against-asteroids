@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "AwesomeLibrary.h"
+#include "general_functions.h"
 
 using std::cout;
 
@@ -11,15 +12,11 @@ Bullet::Bullet(int x, int y, int w, int h) : Entity(x, y, w, h)
 {
 	top = 0;
 
-	setForegroundColor(Color::GREEN);
-	cout << "Se ha creado una bala.\n\n";
-	setForegroundColor(Color::WHITE);
+	showCreationMessage("bala", false, 1);
 }
 Bullet::~Bullet()
 {
-	setForegroundColor(Color::RED);
-	cout << "La bala ha sido eliminada de la memoria.\n\n";
-	setForegroundColor(Color::WHITE);
+	showDestructionMessage("bala", false);
 }
 
 void Bullet::update()

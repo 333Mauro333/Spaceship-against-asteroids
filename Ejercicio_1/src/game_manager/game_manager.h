@@ -33,10 +33,10 @@ private:
 	Asteroid* asteroids[asteroidArraySize];
 
 	void update();
-	void draw();
-	void destroy();
-
 	void checkCollisions();
+	void draw();
+
+	void appearAsteroids(int stepsToAppear);
 };
 
 #endif // !GAME_MANAGER

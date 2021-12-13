@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "AwesomeLibrary.h"
+#include "general_functions.h"
 
 using std::cout;
 
@@ -11,15 +12,11 @@ HUD::HUD(int livesX, int pointsX, int amountOfAsteroidsX, int statisticsY)
 {
 	statPositions = { livesX, pointsX, amountOfAsteroidsX, statisticsY };
 
-	setForegroundColor(Color::GREEN);
-	cout << "Se ha creado un HUD.\n\n";
-	setForegroundColor(Color::WHITE);
+	showCreationMessage("HUD", true, 1);
 }
 HUD::~HUD()
 {
-	setForegroundColor(Color::RED);
-	cout << "El HUD ha sido eliminado de la memoria.\n\n";
-	setForegroundColor(Color::WHITE);
+	showDestructionMessage("HUD", true, 1);
 }
 
 void HUD::writeStatistics(Player* player)

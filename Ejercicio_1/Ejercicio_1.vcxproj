@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="lib\general_functions\general_functions.cpp" />
     <ClCompile Include="lib\Library\AwesomeLibrary.cpp" />
     <ClCompile Include="src\asteroid\asteroid.cpp" />
     <ClCompile Include="src\bullet\bullet.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="src\player\player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\general_functions\general_functions.h" />
     <ClInclude Include="src\asteroid\asteroid.h" />
     <ClInclude Include="src\bullet\bullet.h" />
     <ClInclude Include="src\entity\entity.h" />
@@ -106,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)lib\Library;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\Library;$(ProjectDir)src;$(ProjectDir)lib\general_functions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)lib\Library;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\Library;$(ProjectDir)src;$(ProjectDir)lib\general_functions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

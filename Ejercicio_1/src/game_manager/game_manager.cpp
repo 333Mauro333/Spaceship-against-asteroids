@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "AwesomeLibrary.h"
+#include "general_functions.h"
 
 using std::cout;
 
@@ -35,9 +36,7 @@ GameManager::GameManager(int top, int bot, int left, int right)
 		asteroids[i]->setLimits(top, bot, left, right);
 	}
 
-	setForegroundColor(Color::GREEN);
-	cout << "Se ha creado un controlador del juego.\n\n";
-	setForegroundColor(Color::WHITE);
+	showCreationMessage("controlador del juego", true, 1);
 }
 GameManager::~GameManager()
 {
@@ -48,9 +47,7 @@ GameManager::~GameManager()
 		delete asteroids[i];
 	}
 
-	setForegroundColor(Color::RED);
-	cout << "El controlador del juego ha sido eliminado de la memoria.\n\n";
-	setForegroundColor(Color::WHITE);
+	showDestructionMessage("controlador del juego", true, 1);
 }
 
 void GameManager::run()
@@ -68,24 +65,7 @@ void GameManager::run()
 
 void GameManager::update()
 {
-	if (counter == 1)
-	{
-		counter = 0;
-
-		for (int i = 0; i < asteroidArraySize; i++)
-		{
-			if (!asteroids[i]->isActive())
-			{
-				asteroids[i]->setRandomPositionX();
-				asteroids[i]->appear();
-				break;
-			}
-		}
-	}
-	else
-	{
-		counter++;
-	}
+	appearAsteroids(3);
 
 	player->update();
 
@@ -114,5 +94,27 @@ void GameManager::draw()
 	for (int i = 0; i < asteroidArraySize; i++)
 	{
 		asteroids[i]->draw();
+	}
+}
+
+void GameManager::appearAsteroids(int stepsToAppear)
+{
+	if (counter == stepsToAppear)
+	{
+		counter = 0;
+
+		for (int i = 0; i < asteroidArraySize; i++)
+		{
+			if (!asteroids[i]->isActive())
+			{
+				asteroids[i]->setRandomPositionX();
+				asteroids[i]->appear();
+				break;
+			}
+		}
+	}
+	else
+	{
+		counter++;
 	}
 }

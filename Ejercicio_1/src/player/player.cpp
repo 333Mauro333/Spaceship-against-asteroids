@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "AwesomeLibrary.h"
+#include "general_functions.h"
 
 using std::cout;
 
@@ -20,9 +21,7 @@ Player::Player(int x, int y, int w, int h, unsigned int lives, unsigned int poin
 		bullets[i] = new Bullet(x + 2, y - 1, 1, 2);
 	}
 
-	setForegroundColor(Color::GREEN);
-	cout << "Se ha creado un jugador.\n\n";
-	setForegroundColor(Color::WHITE);
+	showCreationMessage("jugador", true, 1);
 }
 Player::~Player()
 {
@@ -31,9 +30,7 @@ Player::~Player()
 		delete bullets[i];
 	}
 
-	setForegroundColor(Color::RED);
-	cout << "El jugador ha sido eliminado de la memoria.\n\n";
-	setForegroundColor(Color::WHITE);
+	showDestructionMessage("jugador", true);
 }
 
 void Player::update()
