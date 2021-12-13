@@ -31,6 +31,7 @@ private:
 
 	void pressAKeyToPlay(bool win);
 
+	void initObjects();
 	void update();
 	void checkCollisions();
 	void draw();

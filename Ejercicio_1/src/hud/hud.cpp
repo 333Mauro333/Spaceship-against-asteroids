@@ -42,7 +42,7 @@ void HUD::writeStatistics(Player* player)
 	cout << "Points: " << player->getPoints();
 
 	goToCoordinates(statPositions.amountOfAsteroidsX, statPositions.y);
-	cout << "Asteroids in screen: " << Asteroid::getAmountOfActiveAsteroids();
+	cout << "Asteroids in screen: " << Asteroid::getAmountOfActiveAsteroids() << " ";
 }
 void HUD::showEndMessage(bool victory)
 {

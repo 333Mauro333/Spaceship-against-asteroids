@@ -8,7 +8,7 @@
 class Asteroid : public Entity
 {
 public:
-	Asteroid(int x, int y, int w, int h, int pointValue, bool showDebugMessages = true);
+	Asteroid(int x, int y, int w, int h, int pointValue, bool showDebugMessages = true, int numberToGoDown = 1);
 	~Asteroid();
 
 	void update() override;
@@ -20,6 +20,8 @@ public:
 	void setRandomPositionX();
 
 	void setLimits(int top, int bot, int left, int right);
+	void setMaxSpeed();
+	void setRandomStepsToDown();
 
 	int getPointValue();
 
@@ -31,6 +33,8 @@ private:
 	bool showDebugMessages;
 
 	int pointValue;
+	int numberToGoDown;
+	int counter;
 	EDGE_POSITIONS edgePositions;
 
 	void goDown();

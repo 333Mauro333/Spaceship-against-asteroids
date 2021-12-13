@@ -10,11 +10,13 @@ using std::cout;
 
 unsigned int Asteroid::amountOfActiveAsteroids = 0;
 
-Asteroid::Asteroid(int x, int y, int w, int h, int pointValue, bool showDebugMessages) : Entity(x, y, w, h, showDebugMessages)
+Asteroid::Asteroid(int x, int y, int w, int h, int pointValue, bool showDebugMessages, int numberToGoDown) : Entity(x, y, w, h, showDebugMessages)
 {
 	this->showDebugMessages = showDebugMessages;
 
 	this->pointValue = 200;
+	this->numberToGoDown = numberToGoDown;
+	counter = 0;
 	edgePositions = { 0, 0, 0, 0 };
 
 	if (showDebugMessages)
@@ -46,6 +48,8 @@ void Asteroid::update()
 		{
 			hit();
 		}
+
+
 	}
 }
 void Asteroid::draw()
@@ -67,11 +71,11 @@ void Asteroid::appear()
 {
 	amountOfActiveAsteroids++;
 	active = true;
+	setRandomStepsToDown();
 }
 void Asteroid::hit()
 {
 	amountOfActiveAsteroids--;
-	clear();
 	active = false;
 }
 void Asteroid::setRandomPositionX()
@@ -83,6 +87,18 @@ void Asteroid::setRandomPositionX()
 void Asteroid::setLimits(int top, int bot, int left, int right)
 {
 	edgePositions = { top, bot, left, right };
+}
+void Asteroid::setMaxSpeed()
+{
+	if (active)
+	{
+		counter = 0;
+		numberToGoDown = 0;
+	}
+}
+void Asteroid::setRandomStepsToDown()
+{
+	numberToGoDown = rand() % 5 + 1;
 }
 
 int Asteroid::getPointValue()
@@ -98,5 +114,13 @@ unsigned int Asteroid::getAmountOfActiveAsteroids()
 
 void Asteroid::goDown()
 {
-	position.y++;
+	if (counter == numberToGoDown)
+	{
+		counter = 0;
+		position.y++;
+	}
+	else
+	{
+		counter++;
+	}
 }

@@ -10,9 +10,6 @@ using std::cout;
 
 GameManager::GameManager(int top, int bot, int left, int right, bool showDebugMessages, int requiredScore)
 {
-	const int playerSizeX = 5;
-	const int playerSizeY = 3;
-
 	srand(static_cast<unsigned int>(time(NULL)));
 	hideCursor();
 
@@ -23,21 +20,7 @@ GameManager::GameManager(int top, int bot, int left, int right, bool showDebugMe
 	victory = false;
 	counter = 0;
 
-	player = new Player((right - left) / 2 + left - playerSizeX / 2, bot - playerSizeY, playerSizeX, playerSizeY, 0, 4500, showDebugMessages);
-	player->setActive(true);
-	player->setBorderLimits(left, right);
-	for (int i = 0; i < Player::getBulletArraySize(); i++)
-	{
-		player->getBullet(i)->setTopLimit(top);
-	}
-
-	hud = new HUD(getScreenWidth() / 16 * 2, getScreenWidth() / 16 * 7, getScreenWidth() / 16 * 12, top - 3, showDebugMessages);
-
-	for (int i = 0; i < asteroidArraySize; i++)
-	{
-		asteroids[i] = new Asteroid(0, 0, 1, 1, 200, showDebugMessages);
-		asteroids[i]->setLimits(top, bot, left, right);
-	}
+	initObjects();
 
 	if (showDebugMessages)
 	{
@@ -85,12 +68,38 @@ void GameManager::pressAKeyToPlay(bool win)
 	system("pause");
 }
 
+void GameManager::initObjects()
+{
+	const int playerSizeX = 5;
+	const int playerSizeY = 3;
+
+	player = new Player((edgePositions.right - edgePositions.left) / 2 + edgePositions.left - playerSizeX / 2, edgePositions.bot - playerSizeY, playerSizeX, playerSizeY, 15, 0, showDebugMessages);
+	player->setActive(true);
+	player->setBorderLimits(edgePositions.left, edgePositions.right);
+	for (int i = 0; i < Player::getBulletArraySize(); i++)
+	{
+		player->getBullet(i)->setTopLimit(edgePositions.top);
+	}
+
+	hud = new HUD(getScreenWidth() / 16 * 2, getScreenWidth() / 16 * 7, getScreenWidth() / 16 * 12, edgePositions.top - 3, showDebugMessages);
+
+	for (int i = 0; i < asteroidArraySize; i++)
+	{
+		asteroids[i] = new Asteroid(0, 0, 1, 1, 200, showDebugMessages, rand() % 5 + 1);
+		asteroids[i]->setLimits(edgePositions.top, edgePositions.bot, edgePositions.left, edgePositions.right);
+	}
+}
 void GameManager::update()
 {
 	player->update();
 
 	for (int i = 0; i < asteroidArraySize; i++)
 	{
+		if (!player->isActive())
+		{
+			asteroids[i]->setMaxSpeed();
+		}
+
 		asteroids[i]->update();
 	}
 
@@ -145,8 +154,6 @@ void GameManager::draw()
 		goToCoordinates(getScreenWidth() / 2 - 15, 3);
 		cout << "Puntos requeridos: " << requiredScore << ".";
 
-		drawFrame(edgePositions.left, edgePositions.top, edgePositions.right, edgePositions.bot);
-
 		hud->writeStatistics(player);
 		player->draw();
 
@@ -154,6 +161,8 @@ void GameManager::draw()
 		{
 			asteroids[i]->draw();
 		}
+
+		drawFrame(edgePositions.left, edgePositions.top, edgePositions.right, edgePositions.bot);
 	}
 }
 
