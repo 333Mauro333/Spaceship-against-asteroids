@@ -10,8 +10,9 @@ using std::cout;
 
 unsigned int Asteroid::amountOfActiveAsteroids = 0;
 
-Asteroid::Asteroid(int x, int y, int w, int h) : Entity(x, y, w, h)
+Asteroid::Asteroid(int x, int y, int w, int h, int pointValue) : Entity(x, y, w, h)
 {
+	this->pointValue = 200;
 	edgePositions = { 0, 0, 0, 0 };
 
 	showCreationMessage("asteroide", true, 1);
@@ -74,6 +75,11 @@ void Asteroid::setRandomPositionX()
 void Asteroid::setLimits(int top, int bot, int left, int right)
 {
 	edgePositions = { top, bot, left, right };
+}
+
+int Asteroid::getPointValue()
+{
+	return pointValue;
 }
 
 unsigned int Asteroid::getAmountOfActiveAsteroids()

@@ -8,7 +8,7 @@
 class Asteroid : public Entity
 {
 public:
-	Asteroid(int x, int y, int w, int h);
+	Asteroid(int x, int y, int w, int h, int pointValue = 200);
 	~Asteroid();
 
 	void update() override;
@@ -21,10 +21,14 @@ public:
 
 	void setLimits(int top, int bot, int left, int right);
 
+	int getPointValue();
+
 	static unsigned int getAmountOfActiveAsteroids();
 
 private:
 	static unsigned int amountOfActiveAsteroids;
+
+	int pointValue;
 	EDGE_POSITIONS edgePositions;
 
 	void goDown();

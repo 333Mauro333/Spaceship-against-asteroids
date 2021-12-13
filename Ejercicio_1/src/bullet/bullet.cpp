@@ -61,6 +61,13 @@ void Bullet::hit()
 	active = false;
 }
 
+bool Bullet::collidesWith(Entity* entity)
+{
+	return (collidesChar(position.x, position.y, entity) ||
+		   collidesChar(position.x, position.y + 1, entity)) &&
+		   active && entity->isActive();
+}
+
 void Bullet::setTopLimit(int top)
 {
 	this->top = top;
@@ -70,4 +77,9 @@ void Bullet::setTopLimit(int top)
 void Bullet::goUp()
 {
 	position.y--;
+}
+
+bool Bullet::collidesChar(int x, int y, Entity* entity)
+{
+	return x == entity->getPosition().x && y == entity->getPosition().y;
 }

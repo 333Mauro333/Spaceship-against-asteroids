@@ -80,7 +80,17 @@ void GameManager::checkCollisions()
 	{
 		if (player->collidesWith(asteroids[i]))
 		{
-			player->setActive(false);
+			player->crash();
+		}
+
+		for (int j = 0; j < player->getBulletArraySize(); j++)
+		{
+			if (player->getBullet(j)->collidesWith(asteroids[i]))
+			{
+				player->getBullet(j)->hit();
+				player->addPoints(asteroids[i]->getPointValue());
+				asteroids[i]->hit();
+			}
 		}
 	}
 }
@@ -99,22 +109,25 @@ void GameManager::draw()
 
 void GameManager::appearAsteroids(int stepsToAppear)
 {
-	if (counter == stepsToAppear)
+	if (player->isActive())
 	{
-		counter = 0;
-
-		for (int i = 0; i < asteroidArraySize; i++)
+		if (counter == stepsToAppear)
 		{
-			if (!asteroids[i]->isActive())
+			counter = 0;
+
+			for (int i = 0; i < asteroidArraySize; i++)
 			{
-				asteroids[i]->setRandomPositionX();
-				asteroids[i]->appear();
-				break;
+				if (!asteroids[i]->isActive())
+				{
+					asteroids[i]->setRandomPositionX();
+					asteroids[i]->appear();
+					break;
+				}
 			}
 		}
-	}
-	else
-	{
-		counter++;
+		else
+		{
+			counter++;
+		}
 	}
 }

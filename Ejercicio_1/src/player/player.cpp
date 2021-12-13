@@ -87,14 +87,19 @@ bool Player::collidesWith(Entity* entity)
 		   collidesChar(position.x + 3, position.y + 2, entity) || // ╚
 		   collidesChar(position.x + 4, position.y + 2, entity); // ▲ (borde derecho).
 }
-bool Player::collidesChar(int x, int y, Entity* entity)
-{
-	return x == entity->getPosition().x && y == entity->getPosition().y;
-}
 
 void Player::setBorderLimits(int x, int y)
 {
 	sideLimits = { x, y };
+}
+void Player::crash()
+{
+	clear();
+	active = false;
+}
+void Player::addPoints(int points, int maxLimit)
+{
+	this->points = (this->points + points > maxLimit) ? maxLimit : this->points += points;
 }
 
 unsigned int Player::getLives()
@@ -185,6 +190,7 @@ void Player::shoot()
 		}
 	}
 }
+
 bool Player::isKeyPressed()
 {
 	return _kbhit();
@@ -192,4 +198,9 @@ bool Player::isKeyPressed()
 char Player::getCharPressed()
 {
 	return _getch();
+}
+
+bool Player::collidesChar(int x, int y, Entity* entity)
+{
+	return x == entity->getPosition().x && y == entity->getPosition().y;
 }

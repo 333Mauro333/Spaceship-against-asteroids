@@ -30,9 +30,10 @@ public:
 	void clear() override;
 
 	bool collidesWith(Entity* entity) override;
-	bool collidesChar(int x, int y, Entity* entity);
 
 	void setBorderLimits(int x, int y);
+	void crash();
+	void addPoints(int points, int maxLimit = 10000);
 
 	unsigned int getLives();
 	unsigned int getPoints();
@@ -44,7 +45,7 @@ private:
 	SIDE_LIMITS sideLimits;
 
 	static const int bulletArraySize = 2;
-	Bullet* bullets[3];
+	Bullet* bullets[bulletArraySize];
 
 	unsigned int lives;
 	unsigned int points;
@@ -56,6 +57,8 @@ private:
 
 	bool isKeyPressed();
 	char getCharPressed();
+
+	bool collidesChar(int x, int y, Entity* entity);
 };
 
 #endif // !PLAYER_H
